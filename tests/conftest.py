@@ -23,17 +23,10 @@ def setup(request):
         service=Service(ChromeDriverManager().install()), options=options
     )
 
-    # 🔑 Navigate directly to your login URL
-    login_url = (
-        "https://accounts2.netgear.com/login"
-        "?response_type=code"
-        "&client_id=YOUR_CLIENT_ID"
-        "&scope=openid%20email%20profile"
-        "&redirect_uri=https://example.com/callback"
-    )
-    driver.get(login_url)
+    
+    driver.get("https://accounts2.netgear.com/login")
+    
 
     request.cls.driver = driver
     yield driver
     driver.quit()
-
